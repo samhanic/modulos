@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from numbers import Number
+import math
 
 
 def euclidean_modulo(dividend: Number, divisor: Number) -> Number:
@@ -23,12 +24,14 @@ def euclidean_modulo(dividend: Number, divisor: Number) -> Number:
     Returns:
         remainder (Number) : result of the modulo operation
     """
-    return 0
+    divisor_abs = abs(divisor)
+    return dividend - (divisor_abs * math.floor(dividend/divisor_abs))
 
 
 def rounded_modulo(dividend: Number, divisor: Number) -> Number:
     """
     Rounded modulo operation, output centered remainder (i.e. closest to zero remainder)
+    This is already the standard behavior for math.remainder for float values
 
     For more information: https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition
 
@@ -45,7 +48,7 @@ def rounded_modulo(dividend: Number, divisor: Number) -> Number:
     Returns:
         remainder (Number) : result of the modulo operation
     """
-    return 0
+    return dividend - (divisor * round(dividend/divisor))
 
 
 def floored_modulo(dividend: Number, divisor: Number) -> Number:
@@ -67,7 +70,7 @@ def floored_modulo(dividend: Number, divisor: Number) -> Number:
     Returns:
         remainder (Number) : result of the modulo operation
     """
-    return 0
+    return dividend - (divisor * math.floor(dividend/divisor))
 
 
 def ceiled_modulo(dividend: Number, divisor: Number) -> Number:
@@ -88,7 +91,7 @@ def ceiled_modulo(dividend: Number, divisor: Number) -> Number:
     Returns:
         remainder (Number) : result of the modulo operation
     """
-    return 0
+    return dividend - (divisor * math.ceil(dividend/divisor))
 
 
 def truncated_modulo(dividend: Number, divisor: Number) -> Number:
@@ -110,4 +113,4 @@ def truncated_modulo(dividend: Number, divisor: Number) -> Number:
     Returns:
         remainder (Number) : result of the modulo operation
     """
-    return 0
+    return dividend - (divisor * math.trunc(dividend/divisor))

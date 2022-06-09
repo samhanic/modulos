@@ -24,3 +24,12 @@ This may be useful for (but not limited to):
 * Use same mathematical definition for integers and floats values
 
 Note that this library does not correct roundness issues.
+
+### Why would I use these library when Python math library already contains some of its functions ?
+
+Contrary to math.fmod (for truncated modulo) and math.remainder (for rounded modulo), this library keeps the type of inputs (when identical).
+This can be particularly interesting when working with Decimal library, to avoid rounding issues.
+
+## Conributions
+
+You can contribute to the source code by opening issue or pull request.
