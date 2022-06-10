@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from numbers import Number
+from numbers import Real
 import math
 
 
-def euclidean_modulo(dividend: Number, divisor: Number) -> Number:
+def euclidean_modulo(dividend: Real, divisor: Real) -> Real:
     """
     Euclidean modulo, output smallest positive remainder
     Note that, contrary to % operator or math.fmod function, remainder sign will not depend on either divisor or dividend
@@ -18,17 +18,17 @@ def euclidean_modulo(dividend: Number, divisor: Number) -> Number:
         0 <= remainder <= abs(divisor)
 
     Args:
-        dividend (Number)
-        divisor (Number)
+        dividend (Real)
+        divisor (Real)
 
     Returns:
-        remainder (Number) : result of the modulo operation
+        remainder (Real) : result of the modulo operation
     """
-    divisor_abs = abs(divisor)
-    return dividend - (divisor_abs * math.floor(dividend/divisor_abs))
+    # quotient = int(dividend/divisor)
+    return dividend - (abs(divisor) * math.floor(abs(dividend/divisor)))
 
 
-def rounded_modulo(dividend: Number, divisor: Number) -> Number:
+def rounded_modulo(dividend: Real, divisor: Real) -> Real:
     """
     Rounded modulo operation, output centered remainder (i.e. closest to zero remainder)
     This is already the standard behavior for math.remainder for float values
@@ -42,16 +42,16 @@ def rounded_modulo(dividend: Number, divisor: Number) -> Number:
         -abs(divisor)/2 <= remainder <= abs(divisor)/2
 
     Args:
-        dividend (Number)
-        divisor (Number)
+        dividend (Real)
+        divisor (Real)
 
     Returns:
-        remainder (Number) : result of the modulo operation
+        remainder (Real) : result of the modulo operation
     """
     return dividend - (divisor * round(dividend/divisor))
 
 
-def floored_modulo(dividend: Number, divisor: Number) -> Number:
+def floored_modulo(dividend: Real, divisor: Real) -> Real:
     """
     Floored modulo operation, output remainder where quotient is defined by flooring (always rounded downwards)
     This is already the standard behavior for % symbol on integers values
@@ -64,16 +64,16 @@ def floored_modulo(dividend: Number, divisor: Number) -> Number:
         remainder = dividend - quotient * floor(dividend/quotient)
 
     Args:
-        dividend (Number)
-        divisor (Number)
+        dividend (Real)
+        divisor (Real)
 
     Returns:
-        remainder (Number) : result of the modulo operation
+        remainder (Real) : result of the modulo operation
     """
     return dividend - (divisor * math.floor(dividend/divisor))
 
 
-def ceiled_modulo(dividend: Number, divisor: Number) -> Number:
+def ceiled_modulo(dividend: Real, divisor: Real) -> Real:
     """
     Ceiled modulo operation, output remainder where quotient is defined by ceiling (always rounded upwards)
     Note that remainder sign will be the opposite of divisor sign
@@ -85,16 +85,16 @@ def ceiled_modulo(dividend: Number, divisor: Number) -> Number:
         remainder = dividend - quotient * ceil(dividend/quotient)
 
     Args:
-        dividend (Number)
-        divisor (Number)
+        dividend (Real)
+        divisor (Real)
 
     Returns:
-        remainder (Number) : result of the modulo operation
+        remainder (Real) : result of the modulo operation
     """
     return dividend - (divisor * math.ceil(dividend/divisor))
 
 
-def truncated_modulo(dividend: Number, divisor: Number) -> Number:
+def truncated_modulo(dividend: Real, divisor: Real) -> Real:
     """
     Truncated modulo operation, output remainder where quotient is defined by truncation
     This is already the standard behavior for math.fmod
@@ -107,10 +107,11 @@ def truncated_modulo(dividend: Number, divisor: Number) -> Number:
         remainder = dividend - quotient * trunc(dividend/quotient)
 
     Args:
-        dividend (Number)
-        divisor (Number)
+        dividend (Real)
+        divisor (Real)
 
     Returns:
-        remainder (Number) : result of the modulo operation
+        remainder (Real) : result of the modulo operation
     """
-    return dividend - (divisor * math.trunc(dividend/divisor))
+    # For truncation, we need to first cast to float value, because not all Real values support __trunc__ method
+    return dividend - (divisor * math.trunc(float(dividend/divisor)))
