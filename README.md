@@ -2,6 +2,8 @@
 
 Simple pure Python library implementing modulo operations
 
+![Tests](https://github.com/samhanic/modulos/actions/workflows/tests.yml/badge.svg)
+
 ## Purpose
 
 Modulo operation implement remainder of a division, based on this simple formula, with an integer quotient:
