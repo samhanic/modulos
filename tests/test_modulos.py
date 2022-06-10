@@ -71,9 +71,10 @@ def euclidean_modulo_combination_test(dividend, divisor):
 
         # Assert same output type to one of two inputs type
         assert((type(dividend) is type(remainder)) or (type(divisor is type(remainder))))
+        return
 
 
-def test_valids_euclidean_modulo():
+def test_euclidean_modulo():
     construct_test_combinations()
     for values in test_combinations:
         euclidean_modulo_combination_test(values["dividend"], values["divisor"])
@@ -95,16 +96,17 @@ def rounded_modulo_combination_test(dividend, divisor):
         assert modulo_equations(dividend, divisor, remainder)
 
         # Assert result is always the closest to 0
-        assert(2*abs(remainder) < abs(divisor))
+        assert(2*abs(remainder) <= abs(divisor))
 
         # Assert math.remainder shows same float output as this function
         assert(math.isclose(remainder, math.remainder(dividend, divisor), rel_tol=1e-06))
 
         # Assert same output type to one of two inputs type
         assert((type(dividend) is type(remainder)) or (type(divisor is type(remainder))))
+        return
 
 
-def test_valids_rounded_modulo():
+def test_rounded_modulo():
     construct_test_combinations()
     for values in test_combinations:
         rounded_modulo_combination_test(values["dividend"], values["divisor"])
@@ -130,9 +132,10 @@ def floored_modulo_combination_test(dividend, divisor):
 
         # Assert same output type to one of two inputs type
         assert((type(dividend) is type(remainder)) or (type(divisor is type(remainder))))
+        return
 
 
-def test_valids_rounded_modulo():
+def test_floored_modulo():
     construct_test_combinations()
     for values in test_combinations:
         floored_modulo_combination_test(values["dividend"], values["divisor"])
@@ -161,9 +164,10 @@ def ceiled_modulo_combination_test(dividend, divisor):
 
         # Assert same output type to one of two inputs type
         assert((type(dividend) is type(remainder)) or (type(divisor is type(remainder))))
+        return
 
 
-def test_valids_rounded_modulo():
+def test_ceiled_modulo():
     construct_test_combinations()
     for values in test_combinations:
         ceiled_modulo_combination_test(values["dividend"], values["divisor"])
@@ -189,9 +193,10 @@ def truncated_modulo_combination_test(dividend, divisor):
 
         # Assert same output type to one of two inputs type
         assert((type(dividend) is type(remainder)) or (type(divisor is type(remainder))))
+        return
 
 
-def test_valids_rounded_modulo():
+def test_truncated_modulo():
     construct_test_combinations()
     for values in test_combinations:
         truncated_modulo_combination_test(values["dividend"], values["divisor"])

@@ -24,7 +24,6 @@ def euclidean_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
-    # quotient = int(dividend/divisor)
     return dividend - (abs(divisor) * math.floor(abs(dividend/divisor)))
 
 
