@@ -13,7 +13,7 @@ However, as quotient can be any integer, multiple definitions of modulo can outp
 
 This library fixes that by adding 5 different implementations of the operation :
 
-* Euclidean modulo (output smallest positive remainder)
+* Euclidean modulo (output smallest positive remainder. Probably the one you're looking for if you're coming from mathematical background)
 * Rounded modulo (output closest to zero remainder)
 * Floored modulo (output remainder with same sign as divisor)
 * Truncated modulo (outputs remainder with same sign as dividend)

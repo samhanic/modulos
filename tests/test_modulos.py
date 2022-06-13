@@ -19,6 +19,8 @@ values_test = [
                 math.pi,
                 987654321.987654321,
                 Decimal(1),
+                Decimal("3.58"),
+                Decimal("39411.6811"),
                 np.int8(25),
                 np.int8(7),
                 np.uint8(14),
@@ -30,14 +32,13 @@ values_test = [
                 np.float16(155.364),
                 np.float32(65842.5520),
                 np.float64(14786322.1453223),
+                np.float64(31672848.9421418)
               ]
 
 if platform.system() != 'Windows':
     # Float128 is not available in windows, but we still want to test it to verify precision of operation within Linux
     values_test.append(np.float128(14656199198.348697452122))
     values_test.append(np.float128(64792397544.778624631336))
-
-print(values_test[-1])
 
 test_combinations = []
 def construct_test_combinations():
