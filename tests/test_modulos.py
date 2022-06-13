@@ -3,6 +3,7 @@
 from decimal import Decimal as Decimal
 from numbers import Real
 import math
+import platform
 
 import numpy as np
 
@@ -29,9 +30,14 @@ values_test = [
                 np.float16(155.364),
                 np.float32(65842.5520),
                 np.float64(14786322.1453223),
-                np.float64(14656199198.348697452122)
               ]
 
+if platform.system() != 'Windows':
+    # Float128 is not available in windows, but we still want to test it to verify precision of operation within Linux
+    values_test.append(np.float128(14656199198.348697452122))
+    values_test.append(np.float128(64792397544.778624631336))
+
+print(values_test[-1])
 
 test_combinations = []
 def construct_test_combinations():
@@ -99,7 +105,7 @@ def rounded_modulo_combination_test(dividend, divisor):
         assert(2*abs(remainder) <= abs(divisor))
 
         # Assert math.remainder shows same float output as this function
-        assert(math.isclose(remainder, math.remainder(dividend, divisor), rel_tol=1e-06))
+        assert(math.isclose(remainder, math.remainder(dividend, divisor), rel_tol=1e-05))
 
         # Assert same output type to one of two inputs type
         assert((type(dividend) is type(remainder)) or (type(divisor is type(remainder))))
