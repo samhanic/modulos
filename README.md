@@ -40,10 +40,10 @@ print(f"{ceiled_modulo(5,3)=}")
 
 ### Why would I use these library when Python math library already contains some of its functions ?
 
-Contrary to math.fmod (for truncated modulo) and math.remainder (for rounded modulo), this library keeps the type of inputs (when identical).
+Contrary to math.fmod (for truncated modulo) and math.remainder (for rounded modulo), this library keeps same type as inputs (if both are same type).
 This can be particularly interesting when working with Decimal library, to avoid rounding issues.
 
-Be aware that this means this library does not cast values from the types they were in. Generally it does not cause any issue, but if your dividend and divisor types does not support division between them, you will have to manually perform the cast. This is for example the case between Decimal built-in library and Numpy types. It does also mean it does not correct roundness issues.
+Be aware that this means this library does not cast values from the types they were in. Generally it does not cause any issue, but if your dividend and divisor types does not support division between them, you will have to manually perform the cast. This is for example the case between Decimal built-in library and Numpy types. It does also mean it does not correct roundness issues within float.
 
 ## Conributions
 
