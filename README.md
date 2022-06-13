@@ -25,6 +25,19 @@ This may be useful for (but not limited to):
 * Use specific mathematical properties of a definition (especially euclidean or rounded)
 * Use same mathematical definition for integers and floats values
 
+## Example
+
+```python
+from modulos.modulos import euclidean_modulo, rounded_modulo, floored_modulo, ceiled_modulo, truncated_modulo
+
+print(f"{euclidean_modulo(5,3)=}")
+print(f"{rounded_modulo(5,3)=}")
+print(f"{floored_modulo(5,3)=}")
+print(f"{truncated_modulo(5,3)=}")
+print(f"{ceiled_modulo(5,3)=}")
+
+```
+
 ### Why would I use these library when Python math library already contains some of its functions ?
 
 Contrary to math.fmod (for truncated modulo) and math.remainder (for rounded modulo), this library keeps the type of inputs (when identical).
