@@ -24,7 +24,11 @@ def euclidean_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
-    return dividend - (abs(divisor) * math.floor(abs(dividend/divisor)))
+    if (divisor > 0):
+        return dividend - divisor * math.floor(dividend/divisor)
+    elif divisor != 0:
+        return dividend - divisor * math.ceil(dividend/divisor)
+    raise ZeroDivisionError("division by zero while doing modulo operation")
 
 
 def rounded_modulo(dividend: Real, divisor: Real) -> Real:
@@ -47,6 +51,8 @@ def rounded_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     return dividend - (divisor * round(dividend/divisor))
 
 
@@ -58,10 +64,6 @@ def floored_modulo(dividend: Real, divisor: Real) -> Real:
 
     For more information: https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition
 
-    This modulo verify these the formula (with quotient as integer):
-
-        remainder = dividend - quotient * floor(dividend/quotient)
-
     Args:
         dividend (Real)
         divisor (Real)
@@ -69,6 +71,8 @@ def floored_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     return dividend - (divisor * math.floor(dividend/divisor))
 
 
@@ -79,10 +83,6 @@ def ceiled_modulo(dividend: Real, divisor: Real) -> Real:
 
     For more information: https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition
 
-    This modulo verify these the formula (with quotient as integer):
-
-        remainder = dividend - quotient * ceil(dividend/quotient)
-
     Args:
         dividend (Real)
         divisor (Real)
@@ -90,6 +90,8 @@ def ceiled_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     return dividend - (divisor * math.ceil(dividend/divisor))
 
 
@@ -101,10 +103,6 @@ def truncated_modulo(dividend: Real, divisor: Real) -> Real:
 
     For more information: https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition
 
-    This modulo verify these the formula (with quotient as integer):
-
-        remainder = dividend - quotient * trunc(dividend/quotient)
-
     Args:
         dividend (Real)
         divisor (Real)
@@ -112,5 +110,7 @@ def truncated_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     # For truncation, we need to first cast to float value, because not all Real values support __trunc__ method
     return dividend - (divisor * math.trunc(float(dividend/divisor)))
