@@ -24,7 +24,11 @@ def euclidean_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
-    return dividend - (abs(divisor) * math.floor(abs(dividend/divisor)))
+    if (divisor > 0):
+        return dividend - divisor * math.floor(dividend/divisor)
+    elif divisor != 0:
+        return dividend - divisor * math.ceil(dividend/divisor)
+    raise ValueError("Divisor cannot be null")
 
 
 def rounded_modulo(dividend: Real, divisor: Real) -> Real:
@@ -58,10 +62,6 @@ def floored_modulo(dividend: Real, divisor: Real) -> Real:
 
     For more information: https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition
 
-    This modulo verify these the formula (with quotient as integer):
-
-        remainder = dividend - quotient * floor(dividend/quotient)
-
     Args:
         dividend (Real)
         divisor (Real)
@@ -78,10 +78,6 @@ def ceiled_modulo(dividend: Real, divisor: Real) -> Real:
     Note that remainder sign will be the opposite of divisor sign
 
     For more information: https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition
-
-    This modulo verify these the formula (with quotient as integer):
-
-        remainder = dividend - quotient * ceil(dividend/quotient)
 
     Args:
         dividend (Real)
@@ -100,10 +96,6 @@ def truncated_modulo(dividend: Real, divisor: Real) -> Real:
     Note that remainder sign will be same as dividend
 
     For more information: https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition
-
-    This modulo verify these the formula (with quotient as integer):
-
-        remainder = dividend - quotient * trunc(dividend/quotient)
 
     Args:
         dividend (Real)
