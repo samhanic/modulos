@@ -45,6 +45,18 @@ This can be particularly interesting when working with Decimal library, to avoid
 
 Be aware that this means this library does not cast values from the types they were in. Generally it does not cause any issue, but if your dividend and divisor types does not support division between them, you will have to manually perform the cast. This is for example the case between Decimal built-in library and Numpy types. It does also mean it does not correct roundness issues within float.
 
-## Conributions
+## Contributions
 
-You're welcome to contribute to the source code by opening issue or pull request ;)
+You're welcome to contribute to the source code by opening issue or pull request ;)  
+
+A basic test setup have been implemented, here are the steps to run the unit tests on a linux environment:
+
+```bash
+cd modulos
+python3 -m venv venv
+. venv/bin/activate
+pip install --upgrade pip
+pip install -e .
+pip install -r requirements_dev.txt
+pytest
+```
