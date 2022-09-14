@@ -6,6 +6,7 @@ import math
 import platform
 
 import numpy as np
+import pytest
 
 from modulos.modulos import euclidean_modulo, rounded_modulo, floored_modulo, ceiled_modulo, truncated_modulo
 
@@ -40,14 +41,17 @@ if platform.system() != 'Windows':
     values_test_positive.append(np.float128(14656199198.348697452122))
     values_test_positive.append(np.float128(64792397544.778624631336))
 
-values_test = []
-for value in values_test_positive:
-    values_test.append(value)
-    values_test.append(-value)
-
 test_combinations = []
+
 def construct_test_combinations():
     if not test_combinations:
+        # Construct test values (both positive and negative numbers)
+        values_test = []
+        for value in values_test_positive:
+            values_test.append(value)
+            values_test.append(-value)
+
+        # Construct test values combinations
         for dividend in values_test:
             for divisor in values_test:
                 test_combinations.append({"dividend":dividend,"divisor":divisor})
@@ -219,3 +223,16 @@ def test_truncated_modulo():
     construct_test_combinations()
     for values in test_combinations:
         truncated_modulo_combination_test(values["dividend"], values["divisor"])
+
+#### ZeroDivisionError tests #####
+def test_zero_division_error():
+    with pytest.raises(ZeroDivisionError) as e:
+        euclidean_modulo(42, 0)
+    with pytest.raises(ZeroDivisionError) as e:
+        rounded_modulo(42, 0)
+    with pytest.raises(ZeroDivisionError) as e:
+        floored_modulo(42, 0)
+    with pytest.raises(ZeroDivisionError) as e:
+        ceiled_modulo(42, 0)
+    with pytest.raises(ZeroDivisionError) as e:
+        truncated_modulo(42,0)

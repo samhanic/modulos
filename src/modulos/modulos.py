@@ -28,7 +28,7 @@ def euclidean_modulo(dividend: Real, divisor: Real) -> Real:
         return dividend - divisor * math.floor(dividend/divisor)
     elif divisor != 0:
         return dividend - divisor * math.ceil(dividend/divisor)
-    raise ValueError("Divisor cannot be null")
+    raise ZeroDivisionError("division by zero while doing modulo operation")
 
 
 def rounded_modulo(dividend: Real, divisor: Real) -> Real:
@@ -51,6 +51,8 @@ def rounded_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     return dividend - (divisor * round(dividend/divisor))
 
 
@@ -69,6 +71,8 @@ def floored_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     return dividend - (divisor * math.floor(dividend/divisor))
 
 
@@ -86,6 +90,8 @@ def ceiled_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     return dividend - (divisor * math.ceil(dividend/divisor))
 
 
@@ -104,5 +110,7 @@ def truncated_modulo(dividend: Real, divisor: Real) -> Real:
     Returns:
         remainder (Real) : result of the modulo operation
     """
+    if (divisor == 0):
+        raise ZeroDivisionError("division by zero while doing modulo operation")
     # For truncation, we need to first cast to float value, because not all Real values support __trunc__ method
     return dividend - (divisor * math.trunc(float(dividend/divisor)))
